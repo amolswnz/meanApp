@@ -1,0 +1,20 @@
+{
+  "name": "mean-app",
+  "version": "1.0.0",
+  "description": "MEAN Stack Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Amol Wankhede",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "jade": "^1.11.0",
+    "mongoose": "^4.8.4",
+    "morgan": "^1.8.1",
+    "stylus": "^0.54.5",
+    "toastr": "^2.1.2"
+  }
+}
