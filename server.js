@@ -26,32 +26,12 @@ app.use(stylus.middleware(
 ));
 app.use(express.static(__dirname + '/public'));
 
-
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/meanApp');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, ' connection error'));
-db.once('open', function callback() {
-    console.log('meanApp db opend');
-});
-
-var messageSchema = mongoose.Schema( {
-    message: String
-});
-var Message = mongoose.model('Message', messageSchema);
-var mongoMsg;
-Message.findOne().exec(function(err, data) {
-    mongoMsg = data.message;
-});
-
 app.get('/partials/:partialsPath', function(req, res) {
     res.render('partials/' + req.params.partialsPath);
 });
 
 app.get('*', function(req, res) {
-    res.render('index', {
-        mongoMsg: mongoMsg
-    });
+    res.render('index');
 });
 
 var port = 3000;

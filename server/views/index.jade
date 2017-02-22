@@ -1,7 +1,17 @@
 extends ../includes/layout
 
 block main-content
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                a.navbar-brand(href="/") MEAN App
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href="/") Home
+
     section.content
-        h1 Hello world
         div(ng-view)
-        h2=mongoMsg
+
+    footer.container.text-center
+        p &copy; 2017 Amol Wankhede
