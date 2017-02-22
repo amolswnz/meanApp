@@ -7,6 +7,8 @@ bower install angular angular-resource angular-route --save
 
 npm install stylus morgan body-parser --save
 npm install mongoose --save
+
+npm install passport --save
 ```
 
 
