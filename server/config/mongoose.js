@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    crypto = require('crypto');
 
 module.exports = function(config) {
     mongoose.Promise = global.Promise;
@@ -12,27 +13,60 @@ module.exports = function(config) {
     var userSchema = mongoose.Schema({
         firstName: String,
         lastName: String,
-        username: String
+        username: String,
+        salt: String,
+        hashed_pwd: String
     });
+
+    userSchema.methods = {
+        authenticate: function(pwd) {
+            return hashPwd(this.salt, pwd) === this.hashed_pwd;
+        }
+    };
+
     var User = mongoose.model('User', userSchema);
 
     User.find({}).exec(function(err, collection) {
         if(collection.length === 0) {
+            var salt, hash;
+            salt = createSalt();
+            hash = hashPwd(salt, 'asdf');
             User.create({
                 firstName: 'Asdf',
                 lastName: 'Qwer',
-                username: 'asdf'
+                username: 'asdf',
+                salt: salt,
+                hashed_pwd: hash
             });
+            salt = createSalt();
+            hash = hashPwd(salt, 'asdf');
             User.create({
                 firstName: 'Asdf1',
                 lastName: 'Qwer1',
-                username: 'adsf1'
+                username: 'adsf1',
+                salt: salt,
+                hashed_pwd: hash
             });
+            salt = createSalt();
+            hash = hashPwd(salt, 'asdf');
             User.create({
                 firstName: 'Asdf2',
                 lastName: 'Qwer2',
-                username: 'asdf2'
+                username: 'asdf2',
+                salt: salt,
+                hashed_pwd: hash
             });
         }
     });
 };
+
+function createSalt() {
+    return crypto.randomBytes(128).toString('base64');
+}
+function hashPwd(salt, pwd) {
+    var hmac = crypto.createHmac('sha1', salt);
+    hmac.setEncoding('hex');
+    hmac.write(pwd);
+    hmac.end();
+    return hmac.read();
+}
