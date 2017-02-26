@@ -3,9 +3,10 @@ html
     head
         title MEAN App
         link(href='/favicon.png', rel='shortcut icon')
-        link(rel='stylesheet', href='/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
         link(rel='stylesheet', href='/vendor/toastr/toastr.min.css')
         link(rel='stylesheet', href='/css/site.css')
     body(ng-app='app')
+        include currentUser
         block main-content
         include scripts
