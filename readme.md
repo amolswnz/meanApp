@@ -9,6 +9,11 @@ npm install stylus morgan body-parser --save
 npm install mongoose --save
 
 npm install passport --save
+npm install passport-local --save
+
+npm install cookie-parser --save
+npm install express-session --save
+
 ```
 
 
