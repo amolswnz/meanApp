@@ -2,7 +2,6 @@ var express = require('express'),
     mongoose = require('mongoose'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
-
 var User = mongoose.model('User');
 
 module.exports = function() {

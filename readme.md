@@ -1,22 +1,23 @@
 # MEAN Application
 ```
 npm init
-npm install --save express jade
-bower install --save toastr
-bower install angular angular-resource angular-route --save
 
-npm install stylus morgan body-parser --save
+npm install express --save
+npm install jade --save
+npm install stylus --save
+npm install morgan --save
+npm install body-parser --save
 npm install mongoose --save
-
 npm install passport --save
 npm install passport-local --save
-
 npm install cookie-parser --save
 npm install express-session --save
 
+bower install toastr --save 
+bower install angular --save
+bower install angular-resource --save
+bower install angular-route --save
 ```
-
-
 
 # Credits
 
@@ -33,7 +34,3 @@ npm install express-session --save
 [Font Awesome](http://fontawesome.io/) gives you scalable vector icons that can instantly be customized.
 
 [Style Guide John Papa](https://github.com/johnpapa/angular-styleguide) Opinionated Angular style guide for teams by @john_papa
-
-
-
-mongoose.Promise = global.Promise;

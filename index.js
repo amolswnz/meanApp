@@ -9,8 +9,7 @@ var config = require('./server/config/config')[env];
 require('./server/config/express')(app, config);
 require('./server/config/mongoose')(config);
 require('./server/config/routes')(app);
-require('./server/config/passport')(app);
-
+require('./server/config/passport')();
 
 app.listen(config.port);
 
